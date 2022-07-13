@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- 登陆页面 -->
-    <router-view></router-view>
+    <h1>找房</h1>
   </div>
 </template>
 
