@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h1>我的</h1>
-    <router-view></router-view>
+    <h1>资讯</h1>
   </div>
 </template>
 

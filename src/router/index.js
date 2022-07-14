@@ -5,26 +5,30 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/',
+    redirect: '/home'
+  },
+  {
     path: '/home',
-    component: () => import('@/views/Home') // 首页
-  },
-  {
-    path: '/search',
-    component: () => import('@/views/Search') // 搜索
-  },
-  {
-    path: '/info',
-    component: () => import('@/views/Info') // 资讯
-  },
-  {
-    path: '/my',
-    component: () => import('@/views/My'), // 我的
+    component: () => import('@/views/Home'), // 搜索
     children: [
       {
-        path: 'login',
-        component: () => import('@/views/My/Login') // 引入login
+        path: 'search',
+        component: () => import('@/views/Home/Search') // 搜索
+      },
+      {
+        path: 'info',
+        component: () => import('@/views/Home/info') // 资讯
+      },
+      {
+        path: 'my',
+        component: () => import('@/views/Home/My') // 我的
       }
     ]
+  },
+  {
+    path: '/login',
+    component: () => import('@/views/Login') // 登录 引入login
   }
 ]
 
