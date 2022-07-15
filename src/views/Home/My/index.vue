@@ -1,7 +1,7 @@
 <template>
   <div class="my">
     <div class="img" v-if="!user">
-      <img src="http://liufusong.top:8080/img/profile/bg.png" alt="" />
+      <img :src="img" alt="" />
       <!-- 登录信息 -->
       <div class="denglu">
         <div class="toux">
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="img" v-if="user">
-      <img src="http://liufusong.top:8080/img/avatar.png" alt="" />
+      <img :src="img2" alt="" />
       <!-- 登录信息 -->
       <div class="denglu">
         <div class="toux">
@@ -65,7 +65,7 @@
     </div>
     <!-- 底部图片 -->
     <div class="banner">
-      <img src="http://liufusong.top:8080/img/profile/join.png" alt="" />
+      <img :src="imgSrc" alt="" />
     </div>
   </div>
 </template>
@@ -73,11 +73,16 @@
 <script>
 // 引入Vuex的token
 import { mapState } from 'vuex'
+import img from '@/assets/imgs/bgc.png'
+import img2 from '@/assets/imgs/avatar.png'
+import imgSrc from '@/assets/imgs/banner.png'
 
 export default {
   data () {
     return {
-      // img: '/src/assets/imgs/bgc.png'
+      img, // 未登录背景图
+      img2, // 用户登陆以后背景图
+      imgSrc // 底部背景图
     }
   },
   methods: {
