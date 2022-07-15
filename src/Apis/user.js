@@ -1,3 +1,4 @@
+import store from '@/store'
 import request from '@/utlis/request'
 /**
  *登录接口
@@ -10,5 +11,32 @@ export const login = (username, password) => {
     url: '/user/login',
     method: 'POST',
     data: { username, password }
+  })
+}
+
+/**
+ *收藏列表
+ * @returns
+ */
+export const favorites = (token) => {
+  // console.log(store.state.user)
+  return request({
+    url: '/user/favorites',
+    method: 'GET',
+    headers: {
+      Authorization: store.state.user.token
+    }
+  })
+}
+
+// /user/houses
+export const houses = (token) => {
+  // console.log(store.state.user)
+  return request({
+    url: '/user/houses',
+    method: 'GET',
+    headers: {
+      Authorization: store.state.user.token
+    }
   })
 }

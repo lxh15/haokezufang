@@ -29,6 +29,10 @@ const routes = [
   {
     path: '/login',
     component: () => import('@/views/Login') // 登录 引入login
+  },
+  {
+    path: '/favorites',
+    component: () => import('@/views/Home/My/favorites') // 我的收藏
   }
 ]
 

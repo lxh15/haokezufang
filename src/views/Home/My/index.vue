@@ -31,7 +31,7 @@
     <!-- 分类信息 -->
     <div class="feilei">
       <van-grid :column-num="3">
-        <van-grid-item text="我的收藏">
+        <van-grid-item text="我的收藏" @click="shoucangFn">
           <template #icon>
             <span class="iconfont icon-shoucang"></span>
           </template>
@@ -95,6 +95,10 @@ export default {
       // window.localStorage.getItem('token')
       window.localStorage.removeItem('token')
       this.$router.go(0)
+    },
+    // 去我的收藏
+    shoucangFn () {
+      this.$router.push('/favorites')
     }
   },
   computed: { ...mapState(['user']) }

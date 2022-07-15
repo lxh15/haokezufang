@@ -3,7 +3,7 @@
     <!-- 登陆导航栏 -->
     <van-nav-bar title="账号登陆" class="navbar">
       <template #left>
-        <van-icon name="arrow-left" />
+        <van-icon name="arrow-left" @click="clickFn" />
       </template>
     </van-nav-bar>
     <!-- 登录 账号输入框 -->
@@ -72,6 +72,9 @@ export default {
         console.log(err)
         this.$toast.fail('登陆失败')
       }
+    },
+    clickFn () {
+      this.$router.back()
     }
   }
 }
