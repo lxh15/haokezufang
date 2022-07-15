@@ -36,7 +36,7 @@
             <span class="iconfont icon-shoucang"></span>
           </template>
         </van-grid-item>
-        <van-grid-item text="我的出租">
+        <van-grid-item text="我的出租" @click="chuzuFn">
           <template #icon>
             <span class="iconfont icon-chuzuwu"></span>
           </template>
@@ -99,6 +99,10 @@ export default {
     // 去我的收藏
     shoucangFn () {
       this.$router.push('/favorites')
+    },
+    // 去我的出租
+    chuzuFn () {
+      this.$router.push('/rent')
     }
   },
   computed: { ...mapState(['user']) }

@@ -33,6 +33,10 @@ const routes = [
   {
     path: '/favorites',
     component: () => import('@/views/Home/My/favorites') // 我的收藏
+  },
+  {
+    path: '/rent',
+    component: () => import('@/views/Home/My/houses') // 我的出租
   }
 ]
 

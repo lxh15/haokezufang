@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 顶部导航 -->
-    <van-nav-bar title="收藏列表" class="navbar">
+    <van-nav-bar title="房屋管理" class="navbar">
       <template #left>
         <van-icon name="arrow-left" @click="clickFn" />
       </template>
@@ -27,7 +27,7 @@
 
 <script>
 // 引入收藏接口
-import { favorites } from '@/Apis/user'
+import { houses } from '@/Apis/user'
 export default {
   name: 'favorites',
   data () {
@@ -40,7 +40,7 @@ export default {
   },
   async created () {
     try {
-      const res = await favorites()
+      const res = await houses()
       this.list = res.data.body
       //   console.log(res.data.body)
       //   console.log(this.list)
