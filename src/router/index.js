@@ -4,24 +4,28 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
+  // {
+  //   path: '/',
+  //   redirect: '/home'
+  // },
   {
     path: '/',
-    redirect: '/home'
-  },
-  {
-    path: '/home',
-    component: () => import('@/views/Home'), // 搜索
+    component: () => import('@/views/layout'), // 搜索
     children: [
       {
-        path: 'search',
+        path: '/home',
+        component: () => import('@/views/Home/Shouye') // 搜索
+      },
+      {
+        path: '/home/search',
         component: () => import('@/views/Home/Search') // 搜索
       },
       {
-        path: 'info',
+        path: '/home/info',
         component: () => import('@/views/Home/info') // 资讯
       },
       {
-        path: 'my',
+        path: '/home/my',
         component: () => import('@/views/Home/My') // 我的
       }
     ]

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-tabbar v-model="active">
+    <van-tabbar route>
       <van-tabbar-item to="/home">
         <template #icon> <span class="iconfont icon-shouye"></span></template>
         首页</van-tabbar-item
@@ -27,7 +27,7 @@
 export default {
   data () {
     return {
-      active: 0
+      // active: 0
     }
   }
 }

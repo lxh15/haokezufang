@@ -1,6 +1,7 @@
 <template>
   <div class="my">
-    <div class="img" v-if="!user">
+    <!-- 用户未登录状态 -->
+    <div class="img" v-if="!isToKen">
       <img :src="img" alt="" />
       <!-- 登录信息 -->
       <div class="denglu">
@@ -13,12 +14,14 @@
         >
       </div>
     </div>
-    <div class="img" v-if="user">
+
+    <!-- 用户登录状态 -->
+    <div class="img" v-else>
       <img :src="img2" alt="" />
       <!-- 登录信息 -->
       <div class="denglu">
         <div class="toux">
-          <img src="http://liufusong.top:8080/img/profile/avatar.png" alt="" />
+          <img :src="userimg" alt="" />
         </div>
         <p>用户_82932</p>
         <van-button class="btn" type="primary" @click="clickFn"
@@ -30,7 +33,7 @@
 
     <!-- 分类信息 -->
     <div class="feilei">
-      <van-grid :column-num="3">
+      <van-grid :column-num="3" clickable>
         <van-grid-item text="我的收藏" @click="shoucangFn">
           <template #icon>
             <span class="iconfont icon-shoucang"></span>
@@ -71,41 +74,68 @@
 </template>
 
 <script>
-// 引入Vuex的token
-import { mapState } from 'vuex'
 import img from '@/assets/imgs/bgc.png'
 import img2 from '@/assets/imgs/avatar.png'
 import imgSrc from '@/assets/imgs/banner.png'
-
+import userimg from '@/assets/imgs/abc.png'
 export default {
   data () {
     return {
       img, // 未登录背景图
       img2, // 用户登陆以后背景图
-      imgSrc // 底部背景图
+      imgSrc, // 底部背景图
+      userimg
+    }
+  },
+  computed: {
+    isToKen () {
+      // 两个叹号代表把这个表达式转为布尔值 true或者false return
+      return !!this.$store.state.user.token // 看看能不能取到token
     }
   },
   methods: {
+    // 点击登录 去login页面
     click () {
       this.$router.push({
         path: '/login'
       })
     },
     clickFn () {
-      // window.localStorage.getItem('token')
-      window.localStorage.removeItem('token')
-      this.$router.go(0)
+      // 弹出层确认
+      this.$dialog
+        .confirm({ title: '好客租房', message: '是否退出登录' })
+        .then(() => {
+          // 点击确认退出登录 // 退出登录给token清空 传递一个空对象
+          this.$store.commit('setUser', {})
+        })
+        .catch(() => {
+          // on cancel
+          // console.log('用户取消')
+        })
+
+      // this.$router.go(0)
     },
     // 去我的收藏
     shoucangFn () {
-      this.$router.push('/favorites')
+      // 判断token是否存在决定用户是否登录
+      // 登录以后在跳转 否则就去登陆页面
+      if (this.isToKen) {
+        this.$router.push('/favorites')
+      } else {
+        this.$router.push('/login')
+      }
     },
     // 去我的出租
     chuzuFn () {
-      this.$router.push('/rent')
+      // 判断token是否存在决定用户是否登录
+      // 登录以后在跳转 否则就去登陆页面
+      if (this.isToKen) {
+        this.$router.push('/rent')
+      } else {
+        this.$router.push('/login')
+      }
     }
-  },
-  computed: { ...mapState(['user']) }
+  }
 }
 </script>
 

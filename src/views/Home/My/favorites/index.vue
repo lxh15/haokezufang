@@ -8,9 +8,8 @@
     </van-nav-bar>
     <!-- 收藏列表 -->
     <van-list finished-text="没有更多了" class="list">
-      <van-cell v-for="(item, index) in list" :key="index">
+      <van-cell v-for="(item, index) in list" :key="index" @Click="xiangQ">
         <van-card
-          @Click="xiangQ"
           :price="item.price + ' 元/月'"
           :desc="item.desc"
           :title="item.title"
@@ -43,7 +42,7 @@ export default {
       const res = await favorites()
       this.list = res.data.body
       //   console.log(res.data.body)
-      //   console.log(this.list)
+      console.log(this.list)
     } catch (error) {
       console.log(error)
     }

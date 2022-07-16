@@ -6,8 +6,8 @@
         <van-icon name="arrow-left" @click="clickFn" />
       </template>
     </van-nav-bar>
-    <!-- 登录 账号输入框 -->
-    <van-form @submit="onSubmit" class="from">
+    <!-- 登录 账号输入框      :validate-first="true" 代表在某一项校验不通过时停止校验-->
+    <van-form @submit="onSubmit" class="from" :validate-first="true">
       <van-field
         v-model="user.username"
         name="用户名"
@@ -52,7 +52,7 @@ export default {
       })
       try {
         const res = await login(this.user.username, this.user.password)
-        console.log(res)
+        // console.log(res)
         this.$store.commit('setUser', res.data.body) // 把taken传给Vuex
         // this.$toast.success('登陆成功') // 登陆成功提示
         this.$toast({
