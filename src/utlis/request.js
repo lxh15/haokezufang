@@ -3,7 +3,7 @@ import store from '@/store'
 // 配置axios 利用axios的create方法创建一个新的axios对象 ，克隆
 const request = axios.create({
   baseURL: 'http://liufusong.top:8080',
-  timeout: 3000
+  timeout: 8000
 })
 
 // 添加请求拦截器
@@ -12,8 +12,9 @@ request.interceptors.request.use(
     const token = store.state.user.token
     // 在发送请求之前做些什么
     if (token) {
-      config.headers.Authorization = `Bearer ${token} `
+      config.headers.Authorization = token
     }
+    // console.log(config)
     return config
   },
   (error) => {

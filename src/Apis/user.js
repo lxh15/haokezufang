@@ -1,5 +1,5 @@
-import store from '@/store'
-import request from '@/utlis/request'
+// import store from '@/store'
+import request from '@/utlis/request.js'
 /**
  *登录接口
  * @param {*} username 账号
@@ -18,25 +18,29 @@ export const login = (username, password) => {
  *收藏列表
  * @returns
  */
-export const favorites = (token) => {
+export const favorites = () => {
   // console.log(store.state.user)
   return request({
     url: '/user/favorites',
-    method: 'GET',
-    headers: {
-      Authorization: store.state.user.token
-    }
+    method: 'GET'
   })
 }
 
 // /user/houses
-export const houses = (token) => {
+export const houses = () => {
   // console.log(store.state.user)
   return request({
     url: '/user/houses',
-    method: 'GET',
-    headers: {
-      Authorization: store.state.user.token
-    }
+    method: 'GET'
+  })
+}
+/**
+ *房屋详情
+ * @param {*} id 房屋code值
+ * @returns promise
+ */
+export const houseDetail = (id) => {
+  return request({
+    url: `/houses/${id}`
   })
 }

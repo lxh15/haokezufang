@@ -8,7 +8,11 @@
     </van-nav-bar>
     <!-- 收藏列表 -->
     <van-list finished-text="没有更多了" class="list">
-      <van-cell v-for="(item, index) in list" :key="index" @Click="xiangQ">
+      <van-cell
+        v-for="(item, index) in list"
+        :key="index"
+        @click="xiangQ(item.houseCode)"
+      >
         <van-card
           :price="item.price + ' 元/月'"
           :desc="item.desc"
@@ -26,7 +30,7 @@
 
 <script>
 // 引入收藏接口
-import { favorites } from '@/Apis/user'
+import { favorites, houseDetail } from '@/Apis/user'
 export default {
   name: 'favorites',
   data () {
@@ -37,23 +41,30 @@ export default {
       src: 'http://liufusong.top:8080'
     }
   },
-  async created () {
-    try {
-      const res = await favorites()
-      this.list = res.data.body
-      //   console.log(res.data.body)
-      console.log(this.list)
-    } catch (error) {
-      console.log(error)
-    }
+  created () {
+    this.getList()
   },
   methods: {
+    async getList () {
+      try {
+        const res = await favorites()
+        this.list = res.data.body
+        // console.log(res.data.body)
+        console.log(this.list)
+      } catch (error) {
+        console.log(error)
+      }
+    },
     clickFn () {
       this.$router.back()
     },
     onLoad () {},
-    xiangQ () {
-      console.log(1)
+    // 点击产看房屋详情
+    async xiangQ (id) {
+      // this.$router.push('/detail')
+      console.log(id)
+      const res = await houseDetail(id)
+      console.log(res)
     }
   }
 }

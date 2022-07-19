@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <h1>Home</h1>
-  </div>
+  <div>房屋详情</div>
 </template>
 
 <script>

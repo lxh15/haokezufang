@@ -14,7 +14,7 @@ const routes = [
     children: [
       {
         path: '/home',
-        component: () => import('@/views/Home/Shouye') // 搜索
+        component: () => import('@/views/Home/Shouye') // 首页
       },
       {
         path: '/home/search',
@@ -41,6 +41,10 @@ const routes = [
   {
     path: '/rent',
     component: () => import('@/views/Home/My/houses') // 我的出租
+  },
+  {
+    path: '/detail',
+    component: () => import('@/views/Home/My/favorites/houseDetail') // 房屋详细信息
   }
 ]
 

@@ -29,7 +29,7 @@
 // 引入收藏接口
 import { houses } from '@/Apis/user'
 export default {
-  name: 'favorites',
+  name: 'houses',
   data () {
     return {
       list: [],
@@ -42,7 +42,7 @@ export default {
     try {
       const res = await houses()
       this.list = res.data.body
-      //   console.log(res.data.body)
+      console.log(res.data.body)
       //   console.log(this.list)
     } catch (error) {
       console.log(error)
