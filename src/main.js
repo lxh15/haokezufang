@@ -9,6 +9,9 @@ import Vant from 'vant'
 import 'vant/lib/index.css'
 // 引入flexble
 import 'amfe-flexible/index.min.js'
+// 设置图片根地址
+const imgSrc = 'http://liufusong.top:8080'
+Vue.prototype.imgSrc = imgSrc
 
 Vue.use(Vant)
 

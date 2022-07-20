@@ -7,7 +7,8 @@
       </template>
     </van-nav-bar>
     <!-- 收藏列表 -->
-    <van-list finished-text="没有更多了" class="list">
+    <NavbarList :list="list"></NavbarList>
+    <!-- <van-list finished-text="没有更多了" class="list">
       <van-cell v-for="(item, index) in list" :key="index">
         <van-card
           @Click="xiangQ"
@@ -21,12 +22,13 @@
           </template>
         </van-card>
       </van-cell>
-    </van-list>
+    </van-list> -->
   </div>
 </template>
 
 <script>
 // 引入收藏接口
+import NavbarList from '@/components/navbarList'
 import { houses } from '@/Apis/user'
 export default {
   name: 'houses',
@@ -38,24 +40,28 @@ export default {
       src: 'http://liufusong.top:8080'
     }
   },
-  async created () {
-    try {
-      const res = await houses()
-      this.list = res.data.body
-      console.log(res.data.body)
-      //   console.log(this.list)
-    } catch (error) {
-      console.log(error)
-    }
+  components: {
+    NavbarList
+  },
+  created () {
+    this.houses()
+    console.log(this)
   },
   methods: {
+    async houses () {
+      try {
+        const res = await houses()
+        this.list = res.data.body
+        console.log(this.list)
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
     clickFn () {
       this.$router.back()
     },
-    onLoad () {},
-    xiangQ () {
-      console.log(1)
-    }
+    onLoad () {}
   }
 }
 </script>

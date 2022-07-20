@@ -63,7 +63,7 @@
       <van-cell title="租房小组" value="更多" />
       <van-grid direction="horizontal" :column-num="2" :border="false">
         <van-grid-item icon="photo-o" v-for="item in homeGroups" :key="item.id">
-          <van-image width="50" height="50" :src="`${imgUrl} ${item.imgSrc}`" />
+          <van-image width="50" height="50" :src="`${imgSrc}${item.imgSrc}`" />
           <template>
             {{ item.title }}
             <br />
