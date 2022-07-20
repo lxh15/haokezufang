@@ -35,6 +35,16 @@ export const houses = () => {
   })
 }
 /**
+ * 租房小组的数据
+ * @returns promise
+ */
+export const getHomeGroups = () => {
+  return request({
+    url: '/home/groups'
+  })
+}
+
+/**
  *房屋详情
  * @param {*} id 房屋code值
  * @returns promise

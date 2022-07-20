@@ -62,47 +62,13 @@
     <div class="zufang">
       <van-cell title="租房小组" value="更多" />
       <van-grid direction="horizontal" :column-num="2" :border="false">
-        <van-grid-item icon="photo-o">
-          <van-image
-            width="50"
-            height="50"
-            src="https://img01.yzcdn.cn/vant/cat.jpeg"
-          />
+        <van-grid-item icon="photo-o" v-for="item in homeGroups" :key="item.id">
+          <van-image width="50" height="50" :src="`${imgUrl} ${item.imgSrc}`" />
           <template>
-            家住回龙观
+            {{ item.title }}
             <br />
-            归属的感觉
+            {{ item.desc }}
           </template>
-        </van-grid-item>
-        <van-grid-item icon="photo-o">
-          <van-image
-            width="50"
-            height="50"
-            src="https://img01.yzcdn.cn/vant/cat.jpeg"
-          />
-          宜居四五环
-          <br />
-          大都市生活
-        </van-grid-item>
-        <van-grid-item icon="photo-o">
-          <van-image
-            width="50"
-            height="50"
-            src="https://img01.yzcdn.cn/vant/cat.jpeg"
-          />
-          喧嚣三里屯
-          <br />
-          繁华的背后
-        </van-grid-item>
-        <van-grid-item icon="photo-o">
-          <van-image
-            width="50"
-            height="50"
-            src="https://img01.yzcdn.cn/vant/cat.jpeg"
-          />
-          比邻十号线
-          <br />
-          地铁心连心
         </van-grid-item>
       </van-grid>
     </div>
@@ -113,11 +79,27 @@
 import img1 from '@/assets/imgs/1.png'
 import img2 from '@/assets/imgs/2.png'
 import img3 from '@/assets/imgs/3.png'
-
+//
+import { getHomeGroups } from '@/Apis/user'
 export default {
   data () {
     const images = [img1, img2, img3] // 轮播图
-    return { images, value1: '' }
+    return {
+      images,
+      value1: '',
+      homeGroups: [],
+      imgUrl: 'http://115.159.87.220:8080'
+    }
+  },
+  created () {
+    this.getHomeGroups()
+  },
+  methods: {
+    async getHomeGroups () {
+      const { data } = await getHomeGroups()
+      this.homeGroups = data.body
+      console.log(this.homeGroups)
+    }
   }
 }
 </script>
