@@ -79,7 +79,7 @@
 import img1 from '@/assets/imgs/1.png'
 import img2 from '@/assets/imgs/2.png'
 import img3 from '@/assets/imgs/3.png'
-//
+// 引入Api
 import { getHomeGroups } from '@/Apis/user'
 export default {
   data () {

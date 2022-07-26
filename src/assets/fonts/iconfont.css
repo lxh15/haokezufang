@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3520463 */
-  src: url('iconfont.woff2?t=1657977536438') format('woff2'),
-       url('iconfont.woff?t=1657977536438') format('woff'),
-       url('iconfont.ttf?t=1657977536438') format('truetype');
+  src: url('iconfont.woff2?t=1658819938953') format('woff2'),
+       url('iconfont.woff?t=1658819938953') format('woff'),
+       url('iconfont.ttf?t=1658819938953') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,50 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-meiqitianranqi:before {
+  content: "\e60e";
+}
+
+.icon-reshuiqi:before {
+  content: "\e60b";
+}
+
+.icon-dianshiji:before {
+  content: "\e604";
+}
+
+.icon-wifi:before {
+  content: "\e6f2";
+}
+
+.icon-kongdiao:before {
+  content: "\e65b";
+}
+
+.icon-bingxiang:before {
+  content: "\e90b";
+}
+
+.icon-shafa:before {
+  content: "\e61c";
+}
+
+.icon-nuanqi:before {
+  content: "\e621";
+}
+
+.icon-yigui:before {
+  content: "\e643";
+}
+
+.icon-kuandai:before {
+  content: "\e614";
+}
+
+.icon-xiyiji:before {
+  content: "\e67d";
 }
 
 .icon-31sousuo:before {

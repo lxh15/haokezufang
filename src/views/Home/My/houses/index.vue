@@ -45,7 +45,6 @@ export default {
   },
   created () {
     this.houses()
-    console.log(this)
   },
   methods: {
     async houses () {

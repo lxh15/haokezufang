@@ -3,7 +3,6 @@
   <van-list finished-text="没有更多了" class="list">
     <van-cell v-for="(item, index) in list" :key="index">
       <van-card
-        @click="xiangQ(item.houseCode)"
         :price="item.price + ' 元/月'"
         :desc="item.desc"
         :title="item.title"
@@ -27,19 +26,6 @@ export default {
       type: Array,
       required: true,
       default: () => []
-    }
-  },
-  methods: {
-    xiangQ (id) {
-      // console.log(1)
-      // console.log(id)
-      // this.$emit('goHouseDetail', id)
-      this.$router.push({
-        path: '/detail',
-        query: {
-          houseCode: id
-        }
-      })
     }
   }
 }

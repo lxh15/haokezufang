@@ -7,7 +7,8 @@
       </template>
     </van-nav-bar>
     <!-- 收藏列表 -->
-    <van-list finished-text="没有更多了" class="list">
+    <NavbarList :list="list"></NavbarList>
+    <!-- <van-list finished-text="没有更多了" class="list">
       <van-cell
         v-for="(item, index) in list"
         :key="index"
@@ -24,13 +25,14 @@
           </template>
         </van-card>
       </van-cell>
-    </van-list>
+    </van-list> -->
   </div>
 </template>
 
 <script>
+import NavbarList from '@/components/navbarList'
 // 引入收藏接口
-import { favorites, houseDetail } from '@/Apis/user'
+import { favorites } from '@/Apis/user'
 export default {
   name: 'favorites',
   data () {
@@ -44,13 +46,16 @@ export default {
   created () {
     this.getList()
   },
+  components: {
+    NavbarList
+  },
   methods: {
     async getList () {
       try {
         const res = await favorites()
         this.list = res.data.body
         // console.log(res.data.body)
-        console.log(this.list)
+        // console.log(this.list)
       } catch (error) {
         console.log(error)
       }
@@ -58,14 +63,14 @@ export default {
     clickFn () {
       this.$router.back()
     },
-    onLoad () {},
+    onLoad () {}
     // 点击产看房屋详情
-    async xiangQ (id) {
-      // this.$router.push('/detail')
-      console.log(id)
-      const res = await houseDetail(id)
-      console.log(res)
-    }
+    // async goHouseDetail (id) {
+    //   this.$router.push('/detail')
+    //   console.log(id)
+    //   const res = await houseDetail(id)
+    //   console.log(res)
+    // }
   }
 }
 </script>
